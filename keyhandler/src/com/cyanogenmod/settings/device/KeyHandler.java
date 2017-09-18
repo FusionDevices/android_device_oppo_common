@@ -76,7 +76,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int MODE_TOTAL_SILENCE = 600;
     private static final int MODE_ALARMS_ONLY = 601;
     private static final int MODE_PRIORITY_ONLY = 602;
-    private static final int MODE_NONE = 603;
+    private static final int MODE_RING = 603;
     private static final int MODE_VIBRATE = 604;
 
     private static final int GESTURE_WAKELOCK_DURATION = 3000;
@@ -96,7 +96,7 @@ public class KeyHandler implements DeviceKeyHandler {
         sSupportedSliderModes.put(MODE_ALARMS_ONLY, Settings.Global.ZEN_MODE_ALARMS);
         sSupportedSliderModes.put(MODE_PRIORITY_ONLY,
                 Settings.Global.ZEN_MODE_IMPORTANT_INTERRUPTIONS);
-        sSupportedSliderModes.put(MODE_NONE, Settings.Global.ZEN_MODE_OFF);
+        sSupportedSliderModes.put(MODE_RING, Settings.Global.ZEN_MODE_OFF);
         sSupportedSliderModes.put(MODE_VIBRATE, 1);
     }
 
@@ -288,13 +288,9 @@ public class KeyHandler implements DeviceKeyHandler {
                                 Settings.Global.MODE_RINGER, AudioManager.RINGER_MODE_NORMAL);
                     }
                 case MODE_PRIORITY_ONLY:
-                case MODE_NONE:
+                case MODE_RING:
                     if (mRingerMode != AudioManager.RINGER_MODE_VIBRATE) doHapticFeedback();
-                    mContext.getContentResolver().registerContentObserver(
-                            Settings.Global.getUriFor(Settings.Global.MODE_RINGER),
-                            false,
-                            mRingerObserver);
-                    mAudioManager.setRingerMode(mRingerMode);
+                    mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
                     mNotificationManager.setZenMode(sSupportedSliderModes.get(scanCode), null, TAG);
                     break;
                 case MODE_VIBRATE:
