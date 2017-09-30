@@ -305,7 +305,7 @@ public class KeyHandler implements DeviceKeyHandler {
                     }
                 case MODE_PRIORITY_ONLY:
                 case MODE_RING:
-                    if (mRingerMode != AudioManager.RINGER_MODE_VIBRATE) doHapticFeedback();
+                    doHapticFeedback();
                     mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
                     mNotificationManager.setZenMode(sSupportedSliderModes.get(scanCode), null, TAG);
                     break;
