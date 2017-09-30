@@ -79,6 +79,8 @@
     <!-- Button settings -->
     <string name="button_panel_title">Alert Slider</string>
     <string name="buttons_dashboard_summary">Alert Slider settings</string>
+    <string name="button_swap_title">Swap buttons</string>
+    <string name="button_swap_summary">Swap the order of recents and back buttons</string>
 
     <!-- Notification slider -->
     <string name="notification_slider_selection_dialog_title">Action</string>
